@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
 using UITests.Web.Common;
 
 namespace UITests.Web.DemoWebShop.Pages
@@ -36,6 +35,7 @@ namespace UITests.Web.DemoWebShop.Pages
             SelectElementByText(billing_Address_Dropdown_Locator, "New Address");
         }
 
+        //This method sends all the data required for address fields and enters data to proceed
         public void FillAllMandatoryFieldsAndContinue(string firstName,string lastName,string email,string countryName,
             string stateName,string city,string address1,string postalCode,string phoneNumber)
         {
@@ -51,6 +51,7 @@ namespace UITests.Web.DemoWebShop.Pages
             ClickOn(continue_Billing_Button_Locator);
         }
 
+        //Sends data required to build dropdown address text and selects the newely added address
         public void SelectNewelyAddedShippingAddressAndContinue(string firstName,string lastName,string address1,string city,
             string postalCode, string countryName)
         {
@@ -59,23 +60,27 @@ namespace UITests.Web.DemoWebShop.Pages
             ClickOn(continue_Shipping_Button_Locator);
         }
 
+        //This method will select 'Next Day Air' shipping method and proceed
         public void SelectNextDayAirAndContinue()
         {
             ClickOn(nextDayAir_Button_Locator);
             ClickOn(continue_ShippingMethod_Button_Locator);
         }
 
+        //This method will select 'COD' payment method and proceed
         public void SelectCODAndContinue()
         {
             ClickOn(COD_Option_Locator);
             ClickOn(continue_Payment_Button_Locator);
         }
 
+        //Returns payment info text message
         public string GetCODPaymentInfoText()
         {
             return GetText(payment_Method_Info_Locator);
         }
 
+        //Method to confirm order using COD as payment method
         public void SelectContinueFromCODConfirm()
         {
             ClickOn(continue_Payment_Info_Button_Locator);
@@ -91,6 +96,7 @@ namespace UITests.Web.DemoWebShop.Pages
             return GetText(order_Succesful_Message_Locator);
         }
 
+        //Prints order details and proceed
         public void PrintOrderNumberAndContinue()
         {
             Console.WriteLine(GetText(order_Details_Locator).Trim());

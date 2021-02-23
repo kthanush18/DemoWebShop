@@ -13,14 +13,12 @@ namespace UITests.Web.DemoWebShop.Pages
         private static readonly string _username = ConfigurationManager.AppSettings["username"];
         private static readonly string _password = ConfigurationManager.AppSettings["password"];
 
-        public bool IsWelcomeMessageDisplayed()
-        {
-            return IsElementVisible(welcome_Heading_Locator);
-        }
         public string GetWelcomeMessage()
         {
             return GetText(welcome_Heading_Locator);
         }
+
+        //Method for user login and creating dashboard instance
         public DashBoardPage EnterCredentialsAndLogin()
         {
             EnterText(username_Textbox_Locator, _username);

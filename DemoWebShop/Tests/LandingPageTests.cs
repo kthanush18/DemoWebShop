@@ -1,7 +1,5 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UITests.Web.DemoWebShop.Pages;
-using static UITests.Web.Common.WebBrowser;
 
 namespace UITests.Web.DemoWebShop.Tests
 {
@@ -16,6 +14,7 @@ namespace UITests.Web.DemoWebShop.Tests
         }
 
         [TestMethod]
+        [Description("Navigate to login page and verify welcome message displayed")]
         public void TC_NavigateToLoginPage_VerifyWelcomeMessage()
         {
             //Arrange
@@ -25,7 +24,6 @@ namespace UITests.Web.DemoWebShop.Tests
             _login = _landingPage.NavigateToLoginPage();
 
             //Assert
-            Assert.IsTrue(_login.IsWelcomeMessageDisplayed());
             Assert.AreEqual(_login.GetWelcomeMessage(), messageText);
         }
 
