@@ -15,6 +15,7 @@ namespace UITests.Web.DemoWebShop.Tests
         private static WebBrowser _browser;
         private static readonly string _demoWebShop = ConfigurationManager.AppSettings["DemoWebShopURL"].ToString();
 
+        //Method for launching browser and navigating to URL
         [TestInitialize]
         public void TestIntialize()
         {

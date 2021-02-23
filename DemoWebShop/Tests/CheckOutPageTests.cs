@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using UITests.Web.DemoWebShop.Pages;
-using static UITests.Web.Common.WebBrowser;
 
 namespace UITests.Web.DemoWebShop.Tests
 {
@@ -17,7 +16,7 @@ namespace UITests.Web.DemoWebShop.Tests
             _login = _landingPage.NavigateToLoginPage();
             _dashBoard = _login.EnterCredentialsAndLogin();
             _dashBoard.ClearShoppingCart();
-            _dashBoard.SelectRequiredBook();
+            _dashBoard.SelectFictionBook();
             _dashBoard.EnterRandomQuantity();
             _dashBoard.AddToCart();
             _dashBoard.NavigateToShoppingCart();
@@ -27,6 +26,7 @@ namespace UITests.Web.DemoWebShop.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\TestData\BillingAddress.csv",
             "BillingAddress#csv", DataAccessMethod.Sequential)]
         [TestMethod]
+        [Description("Add new address for shipping, pay using COD and verify payment method info")]
         public void TC_AddShippingAddressAndPayUsingCOD_VerifyPaymentMethod()
         {
             //Arrange
@@ -57,6 +57,7 @@ namespace UITests.Web.DemoWebShop.Tests
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", @"|DataDirectory|\TestData\BillingAddress.csv",
             "BillingAddress#csv", DataAccessMethod.Sequential)]
         [TestMethod]
+        [Description("Confirm order on selecting payment method as COD and verify order placed successfully")]
         public void TC_ConfirmOrder_VerifyOrderSuccesfull()
         {
             //Arrange

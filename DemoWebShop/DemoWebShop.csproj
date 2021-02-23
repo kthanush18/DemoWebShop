@@ -70,7 +70,7 @@
     <Compile Include="Tests\TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="TestData\BillingAddress.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

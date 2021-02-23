@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
-using System.Threading;
 using UITests.Web.Common;
 
 namespace UITests.Web.DemoWebShop.Pages
@@ -27,26 +26,26 @@ namespace UITests.Web.DemoWebShop.Pages
         private static readonly By termsOfService_Checkbox_Locator = By.Id("termsofservice");
         private static readonly By logout_Link_Locator = By.XPath("//a [text() = 'Log out']");
 
-        public bool IsAccountIDDisplayed()
-        {
-            return IsElementVisible(user_Account_Locator);
-        }
+
         public string GetUserAccountID()
         {
             return GetText(user_Account_Locator);
         }
+
         public void NavigateToShoppingCart()
         {
             ClickOn(shopping_Cart_Link_Locator);
         }
+
+        //Removes all the products in the shopping cart
         public void ClearShoppingCart()
         {
             string s = GetText(shopping_Cart_Quantity_Locator);
-            if(GetText(shopping_Cart_Quantity_Locator) != "(0)")
+            if (GetText(shopping_Cart_Quantity_Locator) != "(0)")
             {
                 NavigateToShoppingCart();
                 List<IWebElement> removeCheckBoxes = GetWebElements(remove_CheckBox_Locator);
-                foreach(IWebElement removeCheckBox in removeCheckBoxes)
+                foreach (IWebElement removeCheckBox in removeCheckBoxes)
                 {
                     ClickOn(removeCheckBox);
                 }
@@ -54,46 +53,64 @@ namespace UITests.Web.DemoWebShop.Pages
                 ClickOn(dashBoard_Link_Locator);
             }
         }
-        public void SelectRequiredBook()
+
+        //Selects books from categories and fiction book from books list
+        public void SelectFictionBook()
         {
             ClickOn(books_Link_Locator);
             ClickOn(fiction_Book_Image_Locator);
         }
-        public int GetRandomNumber(int minValue,int maxValue)
+
+        //This method sends minimum, maximum values and returns a random value within the range
+        public int GetRandomNumber(int minValue, int maxValue)
         {
             Random random = new Random();
             return random.Next(minValue, maxValue);
         }
+
+        //Generates random quantity and enters in quantity text box
         public void EnterRandomQuantity()
         {
             int randomQuantity = GetRandomNumber(2, 6);
             EnterText(quantity_Text_Box_Locator, randomQuantity.ToString());
         }
+
+        //This method adds products to cart and waits for preloader to load
         public void AddToCart()
         {
             ClickOn(addtocart_Button_Locator);
             WaitForInvisibiltyOfElement(page_Loading_Locator);
         }
+
+        //Returns confirmation message on product added to cart
         public string GetProductAddedMessage()
         {
             return GetText(product_Added_Message_Locator);
         }
+
+        //Evaluates sub total price from product price and quantity
         public string GetSubTotalFromPriceAndQuantity()
         {
             double unitProductPrice = double.Parse(GetText(product_Unit_Price_Locator));
             int quantity = Int32.Parse(GetAtttribute(product_Quantity_Locator, "value"));
             return $"{(unitProductPrice * quantity).ToString()}.00";
         }
+
+        //Returns sub total price displayed in shopping cart
         public string GetSubTotalFromUI()
         {
             return GetText(product_Sub_Total_Price_Locator);
         }
+
+        //This method checks terms of service check box and navigates to checkoutpage
         public CheckOutPage NavigateToCheckOutPage()
         {
             ClickOn(termsOfService_Checkbox_Locator);
             ClickOn(checkout_Button_Locator);
             return new CheckOutPage();
         }
+
+        //Logout from demo webpage
         public void LogOut()
         {
             ClickOn(logout_Link_Locator);

@@ -7,6 +7,7 @@ namespace UITests.Web.DemoWebShop.Pages
     {
         private static readonly By login_Link_Locator = By.XPath("//a [text() = 'Log in']");
 
+        //Method for navigating to login page and creating instance
         public LoginPage NavigateToLoginPage()
         {
             ClickOn(login_Link_Locator);

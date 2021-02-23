@@ -17,6 +17,7 @@ namespace UITests.Web.DemoWebShop.Tests
         }
 
         [TestMethod]
+        [Description("Login with user credentials and verify user account ID")]
         public void TC_LoginToDashBoard_VerifyUserAccountID()
         {
             //Arrange
@@ -26,7 +27,6 @@ namespace UITests.Web.DemoWebShop.Tests
             _dashBoard = _login.EnterCredentialsAndLogin();
 
             //Assert
-            Assert.IsTrue(_dashBoard.IsAccountIDDisplayed());
             Assert.AreEqual(_dashBoard.GetUserAccountID(), username);
         }
 
