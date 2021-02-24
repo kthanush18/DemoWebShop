@@ -35,9 +35,9 @@ namespace UITests.Web.DemoWebShop.Pages
             SelectElementByText(billing_Address_Dropdown_Locator, "New Address");
         }
 
-        //This method sends all the data required for address fields and enters data to proceed
-        public void FillAllMandatoryFieldsAndContinue(string firstName,string lastName,string email,string countryName,
-            string stateName,string city,string address1,string postalCode,string phoneNumber)
+        //Sends all the data required for address fields and enters data to proceed
+        public void FillAllMandatoryFieldsAndContinue(string firstName, string lastName, string email, string countryName,
+            string stateName, string city, string address1, string postalCode, string phoneNumber)
         {
             EnterText(first_Name_TextBox_Locator, firstName);
             EnterText(last_Name_TextBox_Locator, lastName);
@@ -52,45 +52,47 @@ namespace UITests.Web.DemoWebShop.Pages
         }
 
         //Sends data required to build dropdown address text and selects the newely added address
-        public void SelectNewelyAddedShippingAddressAndContinue(string firstName,string lastName,string address1,string city,
-            string postalCode, string countryName)
+        public void SelectNewelyAddedShippingAddressAndContinue(string firstName, string lastName, string address1, 
+            string city, string postalCode, string countryName)
         {
             string buildAddressText = $"{firstName} {lastName}, {address1}, {city} {postalCode}, {countryName}";
             SelectElementByText(shipping_Address_Dropdown_Locator, buildAddressText);
             ClickOn(continue_Shipping_Button_Locator);
         }
 
-        //This method will select 'Next Day Air' shipping method and proceed
+        //Selects 'Next Day Air' shipping method and proceed
         public void SelectNextDayAirAndContinue()
         {
             ClickOn(nextDayAir_Button_Locator);
             ClickOn(continue_ShippingMethod_Button_Locator);
         }
 
-        //This method will select 'COD' payment method and proceed
+        //Selects 'COD' payment method and proceed
         public void SelectCODAndContinue()
         {
             ClickOn(COD_Option_Locator);
             ClickOn(continue_Payment_Button_Locator);
         }
 
-        //Returns payment info text message
+        //Returns payment info
         public string GetCODPaymentInfoText()
         {
             return GetText(payment_Method_Info_Locator);
         }
 
-        //Method to confirm order using COD as payment method
+        //Confirm order using COD as payment method
         public void SelectContinueFromCODConfirm()
         {
             ClickOn(continue_Payment_Info_Button_Locator);
         }
 
+        //Final confirm of order
         public void ConfirmOrder()
         {
             ClickOn(continue_Confirm_Order_Button_Locator);
         }
 
+        //Returns order success info
         public string GetOrderSuccesfulMessage()
         {
             return GetText(order_Succesful_Message_Locator);

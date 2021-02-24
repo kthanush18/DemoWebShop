@@ -61,7 +61,7 @@ namespace UITests.Web.DemoWebShop.Pages
             ClickOn(fiction_Book_Image_Locator);
         }
 
-        //This method sends minimum, maximum values and returns a random value within the range
+        //Sends minimum, maximum values and returns a random value within the range
         public int GetRandomNumber(int minValue, int maxValue)
         {
             Random random = new Random();
@@ -75,7 +75,7 @@ namespace UITests.Web.DemoWebShop.Pages
             EnterText(quantity_Text_Box_Locator, randomQuantity.ToString());
         }
 
-        //This method adds products to cart and waits for preloader to load
+        //Adds products to cart and wait for preloader to load
         public void AddToCart()
         {
             ClickOn(addtocart_Button_Locator);
@@ -102,7 +102,7 @@ namespace UITests.Web.DemoWebShop.Pages
             return GetText(product_Sub_Total_Price_Locator);
         }
 
-        //This method checks terms of service check box and navigates to checkoutpage
+        //Checks terms of service check box and navigates to checkoutpage
         public CheckOutPage NavigateToCheckOutPage()
         {
             ClickOn(termsOfService_Checkbox_Locator);
@@ -110,7 +110,7 @@ namespace UITests.Web.DemoWebShop.Pages
             return new CheckOutPage();
         }
 
-        //Logout from demo webpage
+        //Logout from demowebshop website
         public void LogOut()
         {
             ClickOn(logout_Link_Locator);

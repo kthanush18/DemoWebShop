@@ -18,7 +18,7 @@ namespace UITests.Web.Common
         private int _maxTimeOut;
         private string _browserName;
 
-        //This method launches local browser and creates instance for webdriverwait
+        //Launches local browser and creates instance for webdriverwait
         public void LaunchBrowser()
         {
             _maxTimeOut = Convert.ToInt32(ConfigurationManager.AppSettings["MaxWaitTime"]);
@@ -32,27 +32,27 @@ namespace UITests.Web.Common
             }
         }
 
-        //This method will maximize browser window and navigates to URL
+        //To maximize browser window and navigate to URL
         public void NavigateToURL(string URL)
         {
             _driver.Manage().Window.Maximize();
             _driver.Navigate().GoToUrl(URL);
         }
 
-        //This method sends selector and clicks on the webelement
+        //Sends selector and clicks on the webelement
         public void ClickOn(By selector)
         {
             IWebElement element = _wait.Until(ExpectedConditions.ElementIsVisible(selector));
             element.Click();
         }
 
-        //This method sends webelement and clicks on it
+        //Sends webelement and clicks on it
         public void ClickOn(IWebElement element)
         {
             element.Click();
         }
 
-        //This method clears the text box and sends the text to enter in it
+        //Clears the text box content and sends the text to enter in it
         public void EnterText(By selector, string text)
         {
             IWebElement element = _wait.Until(ExpectedConditions.ElementIsVisible(selector));
@@ -67,26 +67,26 @@ namespace UITests.Web.Common
             return element.Text.Trim();
         }
 
-        //This method checks whether element is displayed on webpage
+        //Checks whether element is displayed on webpage
         public bool IsElementVisible(By selector)
         {
             IWebElement element = _wait.Until(ExpectedConditions.ElementIsVisible(selector));
             return element.Displayed;
         }
 
-        //This method sends the selector and returns collection of webelements 
+        //Sends the selector and returns collection of webelements 
         public List<IWebElement> GetWebElements(By selector)
         {
             return _wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(selector)).ToList();
         }
 
-        //This method sends the selector and returns single webelement
+        //Sends the selector and returns single webelement
         public IWebElement GetWebElement(By selector)
         {
             return _wait.Until(ExpectedConditions.ElementIsVisible(selector));
         }
 
-        //This method used to select an option using text from a dropdown
+        //Selects an option using text, from a dropdown
         //Works for dropdowns with select kind of tags
         public void SelectElementByText(By selector, string text)
         {
@@ -94,20 +94,20 @@ namespace UITests.Web.Common
             selectElement.SelectByText(text);
         }
 
-        //Method to wait untill webelement is disappeared on webpage
+        //Waits untill webelement is disappeared on webpage
         public bool WaitForInvisibiltyOfElement(By selector)
         {
             return _wait.Until(ExpectedConditions.InvisibilityOfElementLocated(selector));
         }
 
-        //This method sends selector, attributeName and returns attribute value
+        //Sends selector, attributeName and returns attribute value
         public string GetAtttribute(By selector, string attributeName)
         {
             IWebElement element = _wait.Until(ExpectedConditions.ElementIsVisible(selector));
             return element.GetAttribute(attributeName);
         }
 
-        //Method for closing & quiting browser window
+        //Close & quit browser window
         public void CloseBrowser()
         {
             _driver.Close();
