@@ -13,6 +13,7 @@ namespace UITests.Web.DemoWebShop.Pages
         private static readonly string _username = ConfigurationManager.AppSettings["username"];
         private static readonly string _password = ConfigurationManager.AppSettings["password"];
 
+        //Returns welcome message
         public string GetWelcomeMessage()
         {
             return GetText(welcome_Heading_Locator);

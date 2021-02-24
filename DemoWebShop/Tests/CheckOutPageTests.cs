@@ -31,20 +31,21 @@ namespace UITests.Web.DemoWebShop.Tests
         {
             //Arrange
             string CODPaymentInfoMessage = "You will pay by COD";
-            string firstName = TestContext.DataRow[0].ToString();
-            string lastName = TestContext.DataRow[1].ToString();
-            string email = TestContext.DataRow[2].ToString();
-            string countryName = TestContext.DataRow[3].ToString();
-            string stateName = TestContext.DataRow[4].ToString();
-            string city = TestContext.DataRow[5].ToString();
-            string address1 = TestContext.DataRow[6].ToString();
-            string postalCode = TestContext.DataRow[7].ToString();
-            string phoneNumber = TestContext.DataRow[8].ToString();
+            string firstName = TestContext.DataRow["firstName"].ToString();
+            string lastName = TestContext.DataRow["lastName"].ToString();
+            string email = TestContext.DataRow["email"].ToString();
+            string countryName = TestContext.DataRow["countryName"].ToString();
+            string stateName = TestContext.DataRow["stateName"].ToString();
+            string city = TestContext.DataRow["city"].ToString();
+            string address1 = TestContext.DataRow["address1"].ToString();
+            string postalCode = TestContext.DataRow["postalCode"].ToString();
+            string phoneNumber = TestContext.DataRow["phoneNumber"].ToString();
 
             //Act
             _checkout.SelectNewAddressFromDropDown();
-            _checkout.FillAllMandatoryFieldsAndContinue(firstName,lastName,email,countryName,stateName,city,address1,postalCode,phoneNumber);
-            _checkout.SelectNewelyAddedShippingAddressAndContinue(firstName,lastName,address1,city,postalCode,countryName);
+            _checkout.FillAllMandatoryFieldsAndContinue(firstName, lastName, email, countryName, stateName, city,
+                address1, postalCode, phoneNumber);
+            _checkout.SelectNewelyAddedShippingAddressAndContinue(firstName, lastName, address1, city, postalCode, countryName);
             _checkout.SelectNextDayAirAndContinue();
             _checkout.SelectCODAndContinue();
             string CODPaymentInfoText = _checkout.GetCODPaymentInfoText();
@@ -62,19 +63,20 @@ namespace UITests.Web.DemoWebShop.Tests
         {
             //Arrange
             string orderSuccesfulMessage = "Your order has been successfully processed!";
-            string firstName = TestContext.DataRow[0].ToString();
-            string lastName = TestContext.DataRow[1].ToString();
-            string email = TestContext.DataRow[2].ToString();
-            string countryName = TestContext.DataRow[3].ToString();
-            string stateName = TestContext.DataRow[4].ToString();
-            string city = TestContext.DataRow[5].ToString();
-            string address1 = TestContext.DataRow[6].ToString();
-            string postalCode = TestContext.DataRow[7].ToString();
-            string phoneNumber = TestContext.DataRow[8].ToString();
+            string firstName = TestContext.DataRow["firstName"].ToString();
+            string lastName = TestContext.DataRow["lastName"].ToString();
+            string email = TestContext.DataRow["email"].ToString();
+            string countryName = TestContext.DataRow["countryName"].ToString();
+            string stateName = TestContext.DataRow["stateName"].ToString();
+            string city = TestContext.DataRow["city"].ToString();
+            string address1 = TestContext.DataRow["address1"].ToString();
+            string postalCode = TestContext.DataRow["postalCode"].ToString();
+            string phoneNumber = TestContext.DataRow["phoneNumber"].ToString();
 
             //Act
             _checkout.SelectNewAddressFromDropDown();
-            _checkout.FillAllMandatoryFieldsAndContinue(firstName, lastName, email, countryName, stateName, city, address1, postalCode, phoneNumber);
+            _checkout.FillAllMandatoryFieldsAndContinue(firstName, lastName, email, countryName, stateName, city,
+                address1, postalCode, phoneNumber);
             _checkout.SelectNewelyAddedShippingAddressAndContinue(firstName, lastName, address1, city, postalCode, countryName);
             _checkout.SelectNextDayAirAndContinue();
             _checkout.SelectCODAndContinue();
